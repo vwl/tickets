@@ -1,10 +1,10 @@
 <?php
-    require_once( 'db.php' );
+    require_once( 'db.php' ); 
     
-    class Usuario extends persistent {
-        public $pk = "USU_ID";
-        public $dfield = "USU_NOME";
-        public $table = "USUARIO";
+    class Categoria extends persistent {
+        public $pk = "CAT_ID";
+        public $dfield = "CAT_NOME";
+        public $table = "CATEGORIA";
         
         public function getById($id) {
             $result = $this->db->query("
@@ -25,24 +25,19 @@
                 FROM
                     ".$this->table."
             ");
-            $page="index.php?menu="."Usuário"."&".$this->pk."=";
+            $page="index.php?menu="."Categoria"."&".$this->pk."=";
             $this->db->result2trow($result,$page,$this->pk);
         }
         
         public function insStatement($param) {
             $stmt = $this->db->getStatement("
                 INSERT INTO ".$this->table."
-                    (USU_NOME,USU_SETOR,USU_EMAIL,USU_ADMIN)
+                    (CAT_NOME)
                 VALUES 
-                    (?,?,?,?)
+                    (?)
             ");
-            if (!isset($param["USU_ADMIN"])) $param["USU_ADMIN"]=0;
-
-             $stmt->bind_param('sisi', 
-                $param["USU_NOME"],
-                $param["USU_SETOR"],
-                $param["USU_EMAIL"],
-                $param["USU_ADMIN"]);
+             $stmt->bind_param('s', 
+                $param["CAT_NOME"]);
                 printf($stmt->error);
            
             $stmt->execute();
@@ -51,26 +46,17 @@
         }
         
         public function updStatement($param) {
+            print_r($param);
             $stmt = $this->db->getStatement("
                 UPDATE ".$this->table." SET 
-                USU_NOME = ?,
-                USU_SETOR = ?,
-                USU_EMAIL = ?,
-                USU_ADMIN = ?
+                CAT_NOME = ?
                 WHERE ".$this->pk." = ?");
                 
-            $stmt->bind_param('sisii',
-                $param["USU_NOME"],
-                $param["USU_SETOR"],
-                $param["USU_EMAIL"],
-                $param["USU_ADMIN"],
+            $stmt->bind_param('si',
+                $param["CAT_NOME"],
                 $param[$this->pk]);
             $stmt->execute();
             $stmt->close();
-        }
-        
-        public function comboSetor() {
-            $this->db->result2combo("SETOR","SET_ID","SET_NOME","USU_SETOR");
         }
     }
 ?>

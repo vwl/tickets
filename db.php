@@ -3,7 +3,8 @@
     class Db {
         
         
-        private $mysql; //=mysqli_connect("localhost","root","mar@","mybd");
+        private $mysql;
+        
         function __construct() {
             $this->mysql=mysqli_connect("localhost","root","db@senha@mar123","tickets") or die ('Unable To Connect');
         }
@@ -44,7 +45,15 @@
             } 
         }
         
-        
+        public function result2combo($table,$pk,$desc,$field) {
+            //($pk==$selected ? "selected" : "" )
+		    $result=$this->query("select $pk,$desc from $table");
+		    echo '<select class="form-control" id="'.$field.'" name="'.$field.'">';
+		    while($row = mysqli_fetch_array($result)) {
+		        echo "<option value='".$row[$pk]."'>".$row[$desc]."</option>";
+		    }
+		    echo '</select>';
+        }
     }
     
     class persistent {
@@ -59,7 +68,16 @@
         }
     }
     
+   /*
    
+   $field="USU_SETOR";
+				    $itens= Array(1 => "Infraestrutura", 2 => "Financeiro");
+				    
+				    echo '<select class="form-control" id="'.$field.'" name="'.$field.'">';
+				        foreach ($itens as $key => $value) {
+				            echo "<option value='".$key."'>".$value."</option>";
+				        }
+				    echo '</select>';*/
     
     
 ?>

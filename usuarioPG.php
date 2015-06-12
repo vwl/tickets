@@ -24,9 +24,9 @@
 			</div>
 			<div class="form-group">
 				 <label for="USU_SETOR">Setor</label>
-				 <select class="form-control" id="USU_SETOR" name="USU_SETOR">
-				    <option value="1">Setor</option>
-				 </select>
+				 <?php
+				    $usuario->comboSetor();
+				 ?>
 			</div>
 			<div class="form-group">
 				 <label for="USU_EMAIL">Email</label><input type="text" class="form-control" id="USU_EMAIL" name="USU_EMAIL">
