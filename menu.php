@@ -1,6 +1,15 @@
 <?php
     class Menu {
-        function menuHeader($atual) {
+        public $menupagina = Array("Indicentes" => "incidente", "Requisições" => "requisicao","Categoria" => "categoria", "Setor" => "setor", "Usuário" => "usuario");
+        public $pagina;
+        public $arquivo;
+        
+        function __construct($pagina) {
+            $this->pagina=$pagina;
+            @$this->arquivo=$this->menupagina[$pagina];
+        }
+        
+        function menuHeader() {
             echo '<div class="row clearfix">';
     		echo '<div class="col-md-12 column">';
     		    echo '<nav class="navbar navbar-default" role="navigation">';
@@ -10,14 +19,13 @@
         				
         			echo '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">';
         			    echo '<ul class="nav navbar-nav">';
-        			        $itensMenu =  Array("Indicentes","Requisições","Categoria","Setor","Usuários");
-        			        foreach ($itensMenu as $value) {
-    			                if ($value==$atual) {
+        			        foreach ($this->menupagina as $key => $value) {
+    			                if ($key==$this->pagina) {
     			                    echo '<li class="active">';
     			                } else {
     			                    echo '<li>';
     			                }
-        					        echo '<a href="#">'.$value.'</a>';
+        					        echo '<a href="index.php?menu='.$key.'">'.$key.'</a>';
         			            echo '</li>';
         			        }
         				echo '</ul>';
@@ -30,6 +38,10 @@
     		    echo '</nav>';
     	    echo '</div>';
             echo '</div>';
+        }
+        
+        function menuBody() {
+            if (isset( $this->arquivo)) include $this->arquivo.'PG.php';
         }
     }
 ?>

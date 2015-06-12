@@ -5,7 +5,7 @@
         
         private $mysql; //=mysqli_connect("localhost","root","mar@","mybd");
         function __construct() {
-            $this->mysql=mysqli_connect("localhost","root","db@senha@mar123","testephp") or die ('Unable To Connect');
+            $this->mysql=mysqli_connect("localhost","root","db@senha@mar123","tickets") or die ('Unable To Connect');
         }
         
         public function query($sqlquery) {
@@ -25,7 +25,7 @@
             while($row = mysqli_fetch_array($result)) {
                 foreach ($row as $key => $value) {
                     if (is_numeric($key)) continue; //Ignore row index
-                    echo "document.getElementById('".strtolower($key)."').value='{$value}';\n";
+                    echo "document.getElementById('".($key)."').value='{$value}';\n";
                 }
             } 
             echo "</script>";

@@ -12,21 +12,25 @@
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript" src="js/tickets.js"></script>
+	
 </head>
 
 <body>
 <div class="container">
 	<div id="menu">
 	    <?php
-	        require_once 'menu.php';
-	        $menu = new Menu();
-	        $menu->menuHeader("Requisições");
+	        require_once 'menu.php'; 
+	        //if (isset($_GET['menu'])) {
+	        
+	            @$menu = new Menu($_GET['menu']);
+	            $menu->menuHeader();
+	        //}
 	    ?>
 	</div>
 	<div id="tela">
         <?php
-            include 'pessoaPG.php';
+            if (isset($menu)) $menu->menuBody();
+            
         ?>
     </div>
 </div>
