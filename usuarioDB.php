@@ -21,10 +21,16 @@
         public function getData() {
              $result = $this->db->query("
                 SELECT
-                    *
+                    USU_ID,
+                    USU_NOME,
+                    SETOR.SET_NOME,
+                    USU_EMAIL,
+                    IF( USU_ADMIN =1,  'Sim',  'Não' ) 
                 FROM
                     ".$this->table."
+                LEFT JOIN SETOR ON ( USU_SETOR = SET_ID ) 
             ");
+
             $page="index.php?menu="."Usuário"."&".$this->pk."=";
             $this->db->result2trow($result,$page,$this->pk);
         }
