@@ -38,15 +38,13 @@
             ");
              $stmt->bind_param('s', 
                 $param["CAT_NOME"]);
-                printf($stmt->error);
-           
+                
             $stmt->execute();
             $stmt->insert_id;
             $stmt->close();
         }
         
         public function updStatement($param) {
-            print_r($param);
             $stmt = $this->db->getStatement("
                 UPDATE ".$this->table." SET 
                 CAT_NOME = ?

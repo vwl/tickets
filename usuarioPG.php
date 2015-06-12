@@ -1,5 +1,6 @@
 <?php
     require_once( 'usuarioDB.php' );
+    require_once( 'setorDB.php' );
     $usuario=new Usuario();
     //Esta enviando dados
     if (isset($_POST[$usuario->dfield])) {
@@ -25,7 +26,7 @@
 			<div class="form-group">
 				 <label for="USU_SETOR">Setor</label>
 				 <?php
-				    $usuario->comboSetor();
+				    $usuario->comboSetor(); 
 				 ?>
 			</div>
 			<div class="form-group">

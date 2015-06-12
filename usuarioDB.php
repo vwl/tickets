@@ -78,5 +78,6 @@
         public function comboSetor() {
             $this->db->result2combo("SETOR","SET_ID","SET_NOME","USU_SETOR");
         }
+        
     }
 ?>

@@ -66,18 +66,14 @@
             $this->db->close();
             unset($this->db);
         }
+        
+        public function staticCombo($field,$itens) {
+		    echo '<select class="form-control" id="'.$field.'" name="'.$field.'">';
+		        foreach ($itens as $key => $value) {
+		            echo "<option value='".$key."'>".$value."</option>";
+		        }
+		    echo '</select>';
+        }
     }
-    
-   /*
-   
-   $field="USU_SETOR";
-				    $itens= Array(1 => "Infraestrutura", 2 => "Financeiro");
-				    
-				    echo '<select class="form-control" id="'.$field.'" name="'.$field.'">';
-				        foreach ($itens as $key => $value) {
-				            echo "<option value='".$key."'>".$value."</option>";
-				        }
-				    echo '</select>';*/
-    
     
 ?>

@@ -1,6 +1,7 @@
 <?php
+    @session_start();
     class Menu {
-        public $menupagina = Array("Indicentes" => "incidente", "Requisições" => "requisicao","Categoria" => "categoria", "Setor" => "setor", "Usuário" => "usuario");
+        public $menupagina = Array("Incidentes" => "ticket", "Requisições" => "ticket","Categoria" => "categoria", "Setor" => "setor", "Usuário" => "usuario");
         public $pagina;
         public $arquivo;
         
@@ -20,6 +21,9 @@
         			echo '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">';
         			    echo '<ul class="nav navbar-nav">';
         			        foreach ($this->menupagina as $key => $value) {
+        			            if ($_SESSION['USU_ADMIN']==0) {
+        			                if ($value!="ticket") continue;
+        			            }
     			                if ($key==$this->pagina) {
     			                    echo '<li class="active">';
     			                } else {
@@ -31,7 +35,7 @@
         				echo '</ul>';
         				echo '<ul class="nav navbar-nav navbar-right">';
         						echo '<li>';
-        							echo '<a href="#">Usuário</a>';
+        							echo '<a href="login.php">'.$_SESSION['USU_NOME'].'</a>';
         						echo '</li>';
                         echo '</ul>';
                     echo '</div>';

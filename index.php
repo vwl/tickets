@@ -19,12 +19,10 @@
 <div class="container">
 	<div id="menu">
 	    <?php
-	        require_once 'menu.php'; 
-	        //if (isset($_GET['menu'])) {
+            require_once 'menu.php'; 
 	        
-	            @$menu = new Menu($_GET['menu']);
-	            $menu->menuHeader();
-	        //}
+            @$menu = new Menu($_GET['menu']);
+            $menu->menuHeader();
 	    ?>
 	</div>
 	<div id="tela">

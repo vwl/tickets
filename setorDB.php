@@ -38,7 +38,6 @@
             ");
              $stmt->bind_param('s', 
                 $param["SET_NOME"]);
-                printf($stmt->error);
            
             $stmt->execute();
             $stmt->insert_id;
@@ -46,7 +45,6 @@
         }
         
         public function updStatement($param) {
-            print_r($param);
             $stmt = $this->db->getStatement("
                 UPDATE ".$this->table." SET 
                 SET_NOME = ?
