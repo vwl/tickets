@@ -18,7 +18,7 @@
 	<div class="col-md-12 column">
 		<form role="form" method="post">
 			<div class="form-group">
-				 <label for="USU_ID">Código</label><input type="text" class="form-control" id="USU_ID" name="USU_ID" disabled>
+				 <label for="USU_ID">Código</label><input type="text" class="form-control" id="USU_ID" name="USU_ID" readonly>
 			</div>
 			<div class="form-group">
 				 <label for="USU_NOME">Nome</label><input type="text" class="form-control" id="USU_NOME" name="USU_NOME">
