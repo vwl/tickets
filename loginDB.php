@@ -16,10 +16,12 @@
                 WHERE
                     USU_EMAIL='{$email}' 
                 AND
-                    USU_SENHA='{$senh}'
+                    USU_SENHA='{$senha}' 
             ");
+            echo $result->num_rows; 
             if ($result->num_rows==0) {
-                header("location:login.php?invalido=1");     
+                header("location:login.php?invalido=1");
+                exit;
             }
             while($row = mysqli_fetch_array($result)) {
                 if (strtolower($row["USU_EMAIL"])==strtolower($email)) {

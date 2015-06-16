@@ -20,7 +20,7 @@
 		    <input type="hidden" id="TIC_USUARIO" name="TIC_USUARIO" value="<?php echo $_SESSION['USU_ID']; ?>">
 		    
 			<div class="form-group">
-				 <label for="TIC_ID">Código</label><input type="text" class="form-control" id="TIC_ID" name="TIC_ID">
+				 <label for="TIC_ID">Código</label><input type="text" class="form-control" id="TIC_ID" name="TIC_ID" disabled>
 			</div>
 			<div class="form-group">
 				 <label for="TIC_ASSUNTO">Assunto</label><input type="text" class="form-control" id="TIC_ASSUNTO" name="TIC_ASSUNTO">

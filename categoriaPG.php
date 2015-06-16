@@ -17,7 +17,7 @@
 	<div class="col-md-12 column">
 		<form role="form" method="post">
 			<div class="form-group">
-				 <label for="CAT_ID">Código</label><input type="text" class="form-control" id="CAT_ID" name="CAT_ID">
+				 <label for="CAT_ID">Código</label><input type="text" class="form-control" id="CAT_ID" name="CAT_ID" disabled>
 			</div>
 			<div class="form-group">
 				 <label for="CAT_NOME">Nome</label><input type="text" class="form-control" id="CAT_NOME" name="CAT_NOME">

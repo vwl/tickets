@@ -39,7 +39,7 @@
         				echo '</ul>';
         				echo '<ul class="nav navbar-nav navbar-right">';
         						echo '<li>';
-        							echo '<a href="login.php">'.$_SESSION['USU_NOME'].'</a>';
+        							echo '<a href="login.php" title="Sair do Sistema">'.$_SESSION['USU_NOME'].'</a>';
         						echo '</li>';
                         echo '</ul>';
                     echo '</div>';

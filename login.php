@@ -33,7 +33,7 @@
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Senha" name="senha" type="senha">
+                                    <input class="form-control" placeholder="Senha" name="senha" type="password">
                                 </div>
                                 <?php
                                     if (isset($_GET['invalido'])) {

@@ -17,7 +17,7 @@
 	<div class="col-md-12 column">
 		<form role="form" method="post">
 			<div class="form-group">
-				 <label for="SET_ID">Código</label><input type="text" class="form-control" id="SET_ID" name="SET_ID">
+				 <label for="SET_ID">Código</label><input type="text" class="form-control" id="SET_ID" name="SET_ID" disabled>
 			</div>
 			<div class="form-group">
 				 <label for="SET_NOME">Nome</label><input type="text" class="form-control" id="SET_NOME" name="SET_NOME">

@@ -38,16 +38,17 @@
         public function insStatement($param) {
             $stmt = $this->db->getStatement("
                 INSERT INTO ".$this->table."
-                    (USU_NOME,USU_SETOR,USU_EMAIL,USU_ADMIN)
+                    (USU_NOME,USU_SETOR,USU_EMAIL,USU_SENHA,USU_ADMIN)
                 VALUES 
                     (?,?,?,?)
             ");
             if (!isset($param["USU_ADMIN"])) $param["USU_ADMIN"]=0;
 
-             $stmt->bind_param('sisi', 
+             $stmt->bind_param('sissi', 
                 $param["USU_NOME"],
                 $param["USU_SETOR"],
                 $param["USU_EMAIL"],
+                $param["USU_SENHA"],
                 $param["USU_ADMIN"]);
                 printf($stmt->error);
            
@@ -62,13 +63,15 @@
                 USU_NOME = ?,
                 USU_SETOR = ?,
                 USU_EMAIL = ?,
+                USU_SENHA = ?,
                 USU_ADMIN = ?
                 WHERE ".$this->pk." = ?");
                 
-            $stmt->bind_param('sisii',
+            $stmt->bind_param('sissii',
                 $param["USU_NOME"],
                 $param["USU_SETOR"],
                 $param["USU_EMAIL"],
+                $param["USU_SENHA"],
                 $param["USU_ADMIN"],
                 $param[$this->pk]);
             $stmt->execute();
