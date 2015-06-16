@@ -1,5 +1,9 @@
 <?php
     @session_start();
+    if (!isset($_SESSION['USU_ID'])) {
+        header("location:login.php?invalido=1");
+    }
+    
     class Menu {
         public $menupagina = Array("Incidentes" => "ticket", "Requisições" => "ticket","Categoria" => "categoria", "Setor" => "setor", "Usuário" => "usuario");
         public $pagina;

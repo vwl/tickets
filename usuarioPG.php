@@ -32,6 +32,9 @@
 			<div class="form-group">
 				 <label for="USU_EMAIL">Email</label><input type="text" class="form-control" id="USU_EMAIL" name="USU_EMAIL">
 			</div>
+			<div class="form-group">
+				 <label for="USU_SENHA">Senha</label><input type="text" class="form-control" id="USU_SENHA" name="USU_SENHA">
+			</div>
 			<div class="checkbox">
 				 <label><input type="checkbox" name="USU_ADMIN" ID="USU_ADMIN" onclick="$('#USU_ADMIN').val($('#USU_ADMIN').prop('checked')===true ? 1 : 0)">Administrador</label>
 			</div> 

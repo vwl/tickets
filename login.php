@@ -32,9 +32,12 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
                                 </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Senha" name="senha" type="senha">
+                                </div>
                                 <?php
                                     if (isset($_GET['invalido'])) {
-                                        echo "Email não encontrado";
+                                        echo "Email ou Senha inválidos";
                                     }
                                 ?>
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>

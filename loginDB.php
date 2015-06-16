@@ -4,7 +4,7 @@
     class Login extends persistent {
         public $table = "USUARIO";
 
-        public function getByEmail($email) {
+        public function getByEmail($email,$senha) {
             $result = $this->db->query("
                 SELECT
                     USU_ID,
@@ -15,6 +15,8 @@
                     ".$this->table."
                 WHERE
                     USU_EMAIL='{$email}' 
+                AND
+                    USU_SENHA='{$senh}'
             ");
             if ($result->num_rows==0) {
                 header("location:login.php?invalido=1");     
@@ -33,5 +35,5 @@
     }
     
     $login = new Login();
-    $login->getByEmail($_POST['email']);
+    $login->getByEmail($_POST['email'],$_POST['senha']);
 ?>

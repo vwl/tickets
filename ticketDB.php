@@ -5,7 +5,26 @@
         public $pk = "TIC_ID";
         public $dfield = "TIC_ASSUNTO";
         public $table = "TICKET";
-
+        
+        public function getByUser($user) {
+            $result = $this->db->query("
+                SELECT
+                    TIC_ID
+                FROM
+                    ".$this->table."
+                WHERE
+                    TIC_USUARIO=$user
+                    AND
+                    TIC_PRIORIDADE=3
+            ");
+            if ($row = mysqli_fetch_array($result)) {
+                return $row['TIC_ID'];
+            } else {
+                return 0;
+                //Nenhum registro encontrado
+            }
+        }
+        
         public function getById($id) {
             $result = $this->db->query("
                 SELECT
