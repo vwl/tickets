@@ -40,7 +40,7 @@
                 INSERT INTO ".$this->table."
                     (USU_NOME,USU_SETOR,USU_EMAIL,USU_SENHA,USU_ADMIN)
                 VALUES 
-                    (?,?,?,?)
+                    (?,?,?,?,?)
             ");
             if (!isset($param["USU_ADMIN"])) $param["USU_ADMIN"]=0;
 
