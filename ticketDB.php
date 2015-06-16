@@ -42,6 +42,7 @@
                 SELECT
                     TIC_ID,
                     SETOR.SET_NOME,
+                    USUARIO.USU_NOME,
                     TIC_ASSUNTO,
                     case TIC_PRIORIDADE when 1 then 'Baixa' when 2 then 'Média' else 'Alta' end as TIC_PRIORIDADE,
                     case TIC_STATUS when 1 then 'Aberto' when 2 then 'Processando' else 'Fechado' end as TIC_STATUS
@@ -51,6 +52,10 @@
                 LEFT JOIN SETOR ON (USUARIO.USU_SETOR=SETOR.SET_ID)
                 WHERE
                     TIC_REQUISICAO=$req
+                ORDER BY
+                    TIC_PRIORIDADE ASC,
+                    TIC_ID ASC
+                    
             ");
             if ($req==1) {
                 $pagina="Requisições";

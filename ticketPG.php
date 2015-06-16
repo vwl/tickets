@@ -62,6 +62,9 @@
 				Setor
 			</th>
 			<th>
+				Usuário
+			</th>
+			<th>
 				Assunto
 			</th>
 			<th>
