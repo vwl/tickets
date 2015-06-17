@@ -6,16 +6,24 @@
         public $dfield = "TIC_ASSUNTO";
         public $table = "TICKET";
         
-        public function getByUser($user) {
+        public function getByUser($user,$req=0,$id=0) {
             $result = $this->db->query("
                 SELECT
                     TIC_ID
                 FROM
                     ".$this->table."
                 WHERE
+                    TIC_PRIORIDADE=3
+                    AND
+                    TIC_STATUS<>1
+                    AND
+                    TIC_REQUISICAO=$req
+                    AND
                     TIC_USUARIO=$user
                     AND
-                    TIC_PRIORIDADE=3
+                    TIC_ID<>$id
+                    
+                    
             ");
             if ($row = mysqli_fetch_array($result)) {
                 return $row['TIC_ID'];
@@ -44,7 +52,7 @@
                     SETOR.SET_NOME,
                     USUARIO.USU_NOME,
                     TIC_ASSUNTO,
-                    case TIC_PRIORIDADE when 1 then 'Baixa' when 2 then 'Média' else 'Alta' end as TIC_PRIORIDADE,
+                    case TIC_PRIORIDADE when 1 then 'Baixa' when 2 then 'Média' else 'Alta' end as TIC_PRIORIDADE_DESC,
                     case TIC_STATUS when 1 then 'Fechado' when 2 then 'Aberto' else 'Processando' end as TIC_STATUS_DESC
                 FROM
                     ".$this->table."
@@ -55,7 +63,7 @@
                     ".($_SESSION['USU_ADMIN']==0 ? "AND TIC_USUARIO=".$_SESSION['USU_ID'] : "" )."
                 ORDER BY
                     TIC_STATUS DESC,
-                    TIC_PRIORIDADE ASC,
+                    TIC_PRIORIDADE DESC,
                     TIC_ID ASC
                     
             ");

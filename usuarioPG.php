@@ -30,7 +30,7 @@
 				 ?>
 			</div>
 			<div class="form-group">
-				 <label for="USU_EMAIL">Email</label><input type="text" class="form-control" id="USU_EMAIL" name="USU_EMAIL">
+				 <label for="USU_EMAIL">Email</label><input type="email" class="form-control" id="USU_EMAIL" name="USU_EMAIL">
 			</div>
 			<div class="form-group">
 				 <label for="USU_SENHA">Senha</label><input type="password" class="form-control" id="USU_SENHA" name="USU_SENHA">
