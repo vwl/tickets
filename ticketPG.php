@@ -51,7 +51,7 @@
 
 <div class="row clearfix">
 	<div class="col-md-12 column">
-		<form role="form" method="post">
+		<form id="form" role="form" method="post">
 		    <input type="hidden" id="TIC_REQUISICAO" name="TIC_REQUISICAO" value="<?php echo isRequisicao(); ?>">
 		    <input type="hidden" id="TIC_USUARIO" name="TIC_USUARIO" value="<?php echo $_SESSION['USU_ID']; ?>">
 		    
@@ -74,7 +74,7 @@
 				 ?>
 			</div>
 			<div class="form-group" >
-				 <label for="TIC_STATUS">Status</label>
+				 <label for="TIC_STATUS" disabled>Status</label>
 				 <?php
 				    $ticket->comboStatus(); 
 				 ?>
@@ -129,6 +129,13 @@
             $("#TIC_STATUS").val("2");
         }
         $("#TIC_STATUS").attr("readonly","true");
+        $("#TIC_STATUS").attr("disabled","true");
+        $('#form').on('submit', function() {
+            $('#TIC_STATUS').attr('disabled', false);
+        }) ;
+        $("#form").bind('ajax:complete', function() {
+            $('#TIC_STATUS').attr('disabled', true);
+        });
     </script>
 <?php
     }
