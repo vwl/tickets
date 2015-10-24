@@ -1,0 +1,109 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Oct 24, 2015 at 12:41 PM
+-- Server version: 5.5.43-MariaDB-1ubuntu0.14.04.2
+-- PHP Version: 5.5.9-1ubuntu4.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `tickets`
+--
+CREATE DATABASE IF NOT EXISTS `tickets` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `tickets`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CATEGORIA`
+--
+
+DROP TABLE IF EXISTS `CATEGORIA`;
+CREATE TABLE IF NOT EXISTS `CATEGORIA` (
+  `CAT_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CAT_NOME` varchar(255) NOT NULL,
+  PRIMARY KEY (`CAT_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SETOR`
+--
+
+DROP TABLE IF EXISTS `SETOR`;
+CREATE TABLE IF NOT EXISTS `SETOR` (
+  `SET_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SET_NOME` varchar(255) NOT NULL,
+  PRIMARY KEY (`SET_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `TICKET`
+--
+
+DROP TABLE IF EXISTS `TICKET`;
+CREATE TABLE IF NOT EXISTS `TICKET` (
+  `TIC_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TIC_ASSUNTO` varchar(255) NOT NULL,
+  `TIC_REQUISICAO` tinyint(1) NOT NULL,
+  `TIC_DESCRICAO` text NOT NULL,
+  `TIC_PRIORIDADE` int(11) NOT NULL,
+  `TIC_USUARIO` int(11) NOT NULL,
+  `TIC_CATEGORIA` int(11) NOT NULL,
+  `TIC_STATUS` int(11) NOT NULL,
+  PRIMARY KEY (`TIC_ID`),
+  KEY `FK_TICKET_FK_CATEGO_CATEGORI` (`TIC_CATEGORIA`),
+  KEY `FK_TICKET_FK_USUARI_USUARIO` (`TIC_USUARIO`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `USUARIO`
+--
+
+DROP TABLE IF EXISTS `USUARIO`;
+CREATE TABLE IF NOT EXISTS `USUARIO` (
+  `USU_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `USU_NOME` varchar(255) NOT NULL,
+  `USU_SETOR` int(11) NOT NULL,
+  `USU_EMAIL` varchar(255) NOT NULL,
+  `USU_SENHA` varchar(255) NOT NULL,
+  `USU_ADMIN` tinyint(1) NOT NULL,
+  PRIMARY KEY (`USU_ID`),
+  KEY `FK_USUARIO_FK_SETOR__SETOR` (`USU_SETOR`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `TICKET`
+--
+ALTER TABLE `TICKET`
+  ADD CONSTRAINT `FK_TICKET_FK_CATEGO_CATEGORI` FOREIGN KEY (`TIC_CATEGORIA`) REFERENCES `CATEGORIA` (`CAT_ID`),
+  ADD CONSTRAINT `FK_TICKET_FK_USUARI_USUARIO` FOREIGN KEY (`TIC_USUARIO`) REFERENCES `USUARIO` (`USU_ID`);
+
+--
+-- Constraints for table `USUARIO`
+--
+ALTER TABLE `USUARIO`
+  ADD CONSTRAINT `FK_USUARIO_FK_SETOR__SETOR` FOREIGN KEY (`USU_SETOR`) REFERENCES `SETOR` (`SET_ID`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
